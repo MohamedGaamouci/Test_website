@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travel - Your Journey Begins Here</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600') center/cover;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <img src="Voyago_logo.png" alt="Voyago Logo" class="h-12 w-auto">
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link active text-gray-700 hover:text-purple-600 font-medium"
+                        onclick="showPage('home')">Home</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-purple-600 font-medium"
+                        onclick="showPage('services')">Services</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-purple-600 font-medium"
+                        onclick="showPage('about')">About</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-purple-600 font-medium"
+                        onclick="showPage('contact')">Contact</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-purple-600 font-medium"
+                        onclick="showPage('login')">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
+            <div class="text-center px-4 max-w-5xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">Your Journey Begins Here</h1>
+                <p class="text-xl md:text-2xl mb-8 animate-slide-up" style="animation-delay: 0.2s">Explore the world
+                    with confidence - Visa, Hotels, Flights & More</p>
+                <button onclick="showPage('services')"
+                    class="btn-primary text-white px-10 py-4 rounded-full text-lg font-semibold animate-slide-up"
+                    style="animation-delay: 0.4s">
+                    Request a Service →
+                </button>
+            </div>
+        </section>
+
+        <!-- Description Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Wanderlust Travel</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">We are your trusted partner in making travel
+                        dreams come true. From visa processing to flight bookings, we handle every detail so you can
+                        focus on the adventure ahead.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">What We Offer</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover cursor-pointer"
+                        onclick="showPage('services')">
+                        <div class="text-5xl mb-4">🛂</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Visa Services</h3>
+                        <p class="text-gray-600">Fast and reliable visa processing for all destinations</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover cursor-pointer"
+                        onclick="showPage('services')">
+                        <div class="text-5xl mb-4">🏨</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Hotel Booking</h3>
+                        <p class="text-gray-600">Premium accommodations at the best prices</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover cursor-pointer"
+                        onclick="showPage('services')">
+                        <div class="text-5xl mb-4">✈️</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Flight Tickets</h3>
+                        <p class="text-gray-600">Compare and book flights to anywhere in the world</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover cursor-pointer"
+                        onclick="showPage('services')">
+                        <div class="text-5xl mb-4">⛵</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Boat Tours</h3>
+                        <p class="text-gray-600">Exclusive cruises and maritime experiences</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="gradient-bg py-20 text-white">
+            <div class="max-w-4xl mx-auto text-center px-4">
+                <h2 class="text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
+                <p class="text-xl mb-8">Let us handle the details while you dream about your destination</p>
+                <button onclick="showPage('contact')"
+                    class="bg-white text-purple-600 px-10 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition">
+                    Contact Us Today
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page pt-32 pb-20 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h1 class="text-5xl font-bold text-gray-800 mb-4">Our Services</h1>
+                <p class="text-xl text-gray-600">Comprehensive travel solutions tailored to your needs</p>
+            </div>
+
+            <!-- Main Service Categories -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="gradient-bg p-8 text-white">
+                        <div class="text-6xl mb-4">🛂</div>
+                        <h2 class="text-3xl font-bold">Visa & Residence Services</h2>
+                    </div>
+                    <div class="p-8">
+                        <div class="space-y-4">
+                            <div class="p-6 bg-purple-50 rounded-xl hover:bg-purple-100 transition cursor-pointer">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Tourist Visa Application</h3>
+                                <p class="text-gray-600">Fast processing for tourist visas worldwide</p>
+                            </div>
+                            <div class="p-6 bg-purple-50 rounded-xl hover:bg-purple-100 transition cursor-pointer">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Business Visa Services</h3>
+                                <p class="text-gray-600">Professional visa support for business travelers</p>
+                            </div>
+                            <div class="p-6 bg-purple-50 rounded-xl hover:bg-purple-100 transition cursor-pointer">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Residence Permits</h3>
+                                <p class="text-gray-600">Complete assistance with residence applications</p>
+                            </div>
+                            <div class="p-6 bg-purple-50 rounded-xl hover:bg-purple-100 transition cursor-pointer">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Visa Appointment Booking</h3>
+                                <p class="text-gray-600">Secure your embassy appointment hassle-free</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="gradient-bg p-8 text-white">
+                        <div class="text-6xl mb-4">🧳</div>
+                        <h2 class="text-3xl font-bold">Travel Reservations</h2>
+                    </div>
+                    <div class="p-8">
+                        <div class="space-y-4">
+                            <div class="p-6 bg-purple-50 rounded-xl hover:bg-purple-100 transition cursor-pointer">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">✈️ Flight Bookings</h3>
+                                <p class="text-gray-600">Domestic and international flight reservations</p>
+                            </div>
+                            <div class="p-6 bg-purple-50 rounded-xl hover:bg-purple-100 transition cursor-pointer">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">🏨 Hotel Reservations</h3>
+                                <p class="text-gray-600">Luxury to budget accommodations worldwide</p>
+                            </div>
+                            <div class="p-6 bg-purple-50 rounded-xl hover:bg-purple-100 transition cursor-pointer">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">⛵ Boat & Cruise Tickets</h3>
+                                <p class="text-gray-600">Maritime adventures and cruise packages</p>
+                            </div>
+                            <div class="p-6 bg-purple-50 rounded-xl hover:bg-purple-100 transition cursor-pointer">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">🎫 Complete Travel Packages</h3>
+                                <p class="text-gray-600">All-inclusive vacation planning services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button onclick="showPage('contact')"
+                    class="btn-primary text-white px-10 py-4 rounded-full text-lg font-semibold">
+                    Request a Custom Service
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page pt-32 pb-20 min-h-screen">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h1 class="text-5xl font-bold text-gray-800 mb-4">About Wanderlust Travel</h1>
+                <p class="text-xl text-gray-600">Your trusted partner in global travel solutions</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200" alt="About Us"
+                    class="w-full h-96 object-cover">
+                <div class="p-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
+                    <p class="text-lg text-gray-600 mb-6">Founded with a passion for exploration and a commitment to
+                        exceptional service, Wanderlust Travel has been helping dreamers become travelers for over a
+                        decade. We understand that every journey is unique, and we pride ourselves on providing
+                        personalized solutions that turn travel aspirations into unforgettable experiences.</p>
+
+                    <p class="text-lg text-gray-600 mb-8">Our team of dedicated travel experts brings years of industry
+                        experience and a genuine love for what they do. From navigating complex visa requirements to
+                        finding the perfect accommodation, we handle every detail with precision and care.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                        <div class="text-center">
+                            <div class="text-5xl mb-4">🌍</div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">150+</h3>
+                            <p class="text-gray-600">Countries Served</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl mb-4">😊</div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">50,000+</h3>
+                            <p class="text-gray-600">Happy Travelers</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl mb-4">⭐</div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">4.9/5</h3>
+                            <p class="text-gray-600">Customer Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-purple-600 to-purple-800 p-10 rounded-2xl text-white">
+                    <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+                    <p class="text-lg">To make world travel accessible, affordable, and stress-free for everyone. We
+                        believe that exploring new cultures and destinations enriches lives, and we're here to make that
+                        happen.</p>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 p-10 rounded-2xl text-white">
+                    <h3 class="text-2xl font-bold mb-4">Why Choose Us</h3>
+                    <p class="text-lg">Expert guidance, transparent pricing, 24/7 support, and a proven track record of
+                        success. Your journey is our priority, and we go above and beyond to ensure your complete
+                        satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page pt-32 pb-20 min-h-screen">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h1 class="text-5xl font-bold text-gray-800 mb-4">Get In Touch</h1>
+                <p class="text-xl text-gray-600">We'd love to hear from you. Send us a message!</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="john@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="+1 234 567 8900">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="Tell us about your travel plans..."></textarea>
+                            </div>
+                            <button type="submit"
+                                class="btn-primary w-full text-white py-4 rounded-lg text-lg font-semibold">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <div
+                        class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl shadow-xl p-8 text-white mb-8">
+                        <h2 class="text-2xl font-bold mb-6">Contact Information</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4">📧</div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1">Email</h3>
+                                    <p class="text-purple-100">info@wanderlusttravel.com</p>
+                                    <p class="text-purple-100">support@wanderlusttravel.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4">📱</div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1">Phone</h3>
+                                    <p class="text-purple-100">+1 (555) 123-4567</p>
+                                    <p class="text-purple-100">+1 (555) 987-6543</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4">💬</div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1">WhatsApp</h3>
+                                    <p class="text-purple-100">+1 (555) 123-4567</p>
+                                    <a href="#"
+                                        class="inline-block mt-2 bg-green-500 hover:bg-green-600 px-6 py-2 rounded-full font-medium transition">
+                                        Chat on WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4">📍</div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1">Office Location</h3>
+                                    <p class="text-purple-100">123 Travel Street, Suite 456<br>Tourism District, TD
+                                        78901</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-xl p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Office Hours</h2>
+                        <div class="space-y-3 text-gray-600">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Monday - Friday:</span>
+                                <span>9:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Saturday:</span>
+                                <span>10:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Sunday:</span>
+                                <span>Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Signup Page -->
+    <div id="login" class="page pt-32 pb-20 min-h-screen">
+        <div class="max-w-md mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="gradient-bg p-8 text-white text-center">
+                    <h1 class="text-4xl font-bold mb-2">Welcome Back</h1>
+                    <p class="text-purple-100">Sign in to manage your bookings</p>
+                </div>
+
+                <div class="p-8">
+                    <div id="loginForm">
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="your@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Password</label>
+                                <input type="password"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="••••••••">
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span class="text-gray-600">Remember me</span>
+                                </label>
+                                <a href="#" class="text-purple-600 hover:text-purple-700 font-medium">Forgot
+                                    Password?</a>
+                            </div>
+                            <button type="submit"
+                                class="btn-primary w-full text-white py-4 rounded-lg text-lg font-semibold">
+                                Sign In
+                            </button>
+                        </form>
+
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-600">Don't have an account?
+                                <a href="#" onclick="toggleForm()"
+                                    class="text-purple-600 hover:text-purple-700 font-semibold">Sign Up</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="signupForm" style="display: none;">
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="your@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="+1 234 567 8900">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Password</label>
+                                <input type="password"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="••••••••">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Confirm Password</label>
+                                <input type="password"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 transition"
+                                    placeholder="••••••••">
+                            </div>
+                            <button type="submit"
+                                class="btn-primary w-full text-white py-4 rounded-lg text-lg font-semibold">
+                                Create Account
+                            </button>
+                        </form>
+
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-600">Already have an account?
+                                <a href="#" onclick="toggleForm()"
+                                    class="text-purple-600 hover:text-purple-700 font-semibold">Sign In</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <p class="text-center text-gray-500 mb-4">Or continue with</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button
+                                class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <span class="mr-2">🔵</span> Facebook
+                            </button>
+                            <button
+                                class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <span class="mr-2">🔴</span> Google
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">✈️ Wanderlust</h3>
+                    <p class="text-gray-400">Your trusted travel partner for unforgettable journeys around the world.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('home')"
+                                class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" onclick="showPage('services')"
+                                class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="#" onclick="showPage('about')"
+                                class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#" onclick="showPage('contact')"
+                                class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="#" onclick="showPage('login')"
+                                class="text-gray-400 hover:text-white transition">Login</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Our Services</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-400">Visa Applications</span></li>
+                        <li><span class="text-gray-400">Flight Bookings</span></li>
+                        <li><span class="text-gray-400">Hotel Reservations</span></li>
+                        <li><span class="text-gray-400">Travel Packages</span></li>
+                        <li><span class="text-gray-400">Boat & Cruise Tours</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Get in Touch</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 info@wanderlusttravel.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>📍 123 Travel Street, Tourism District</li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-xl transition">🌐</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl transition">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl transition">📸</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl transition">🐦</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+                © <span id="year"></span> Wanderlust Travel. All rights reserved. | Designed with ❤️ by Wanderlust Team
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-white z-50 hidden">
+        <div class="p-6 flex justify-between items-center border-b">
+            <span class="text-2xl font-bold gradient-text">✈️ Wanderlust</span>
+            <button onclick="toggleMobileMenu()" class="text-2xl text-gray-700">✖️</button>
+        </div>
+        <div class="flex flex-col items-center space-y-6 mt-10 text-lg font-medium">
+            <a href="#" onclick="showPage('home'); toggleMobileMenu();"
+                class="text-gray-700 hover:text-purple-600">Home</a>
+            <a href="#" onclick="showPage('services'); toggleMobileMenu();"
+                class="text-gray-700 hover:text-purple-600">Services</a>
+            <a href="#" onclick="showPage('about'); toggleMobileMenu();"
+                class="text-gray-700 hover:text-purple-600">About</a>
+            <a href="#" onclick="showPage('contact'); toggleMobileMenu();"
+                class="text-gray-700 hover:text-purple-600">Contact</a>
+            <a href="#" onclick="showPage('login'); toggleMobileMenu();"
+                class="text-gray-700 hover:text-purple-600">Login</a>
+        </div>
+    </div>
+
+    <!-- Floating Mobile Button -->
+    <button onclick="toggleMobileMenu()"
+        class="fixed top-5 right-5 md:hidden bg-white shadow-lg p-3 rounded-full text-gray-800 z-50">
+        ☰
+    </button>
+
+    <!-- Scripts -->
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        function showPage(pageId) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            navLinks.forEach(link => link.classList.remove('active'));
+            navLinks.forEach(link => {
+                if (link.getAttribute('onclick').includes(pageId)) {
+                    link.classList.add('active');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleForm() {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+            }
+        }
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
